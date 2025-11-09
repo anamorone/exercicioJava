@@ -23,7 +23,6 @@ public class Poligono {
     
     public void calcPerimetro(){
         
-    ArrayList<Float> listaDistancia = new ArrayList<>();
     float dx;
     float dy;
     float d;
@@ -32,20 +31,22 @@ public class Poligono {
     for(int i = 0; i < lista.size(); i++){
         dx = 0;
         dy = 0;
+        
+        if(i == (lista.size() - 1)){
+        dx = ( lista.get(i).getX() - lista.get(0).getX() );
+        dy = ( lista.get(i).getY() - lista.get(0).getY() );
+        } else {
         dx = ( lista.get(i).getX() - lista.get(i + 1).getX() );
         dy = ( lista.get(i).getY() - lista.get(i + 1).getY() );
+        }
         
         d = Math.sqrt((Math.pow(dx, 2)) + (Math.pow(dy, 2)));
-        listaDistancia.add(d);
+        soma += d;
     }
     
-    
-    for(int i = 0; listaDistancia.size(); i++){
-        soma += listaDistancia.get(i);
-        
-    }
     this.perimetro = soma;
     System.out.println("A soma do perímetro desse perímetro é: " + perimetro);
+    
         
     }
     
